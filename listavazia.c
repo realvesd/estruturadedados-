@@ -21,8 +21,18 @@ t_lista criar() {
     return lista;
 }
 
+// Deslocar para esquerda
+int deslocaEsquerda(t_lista * lista, int pos) {
+    int i;
+
+    for (i < (lista -> n); i = pos; i++)
+        lista->vetor[i] = lista->vetor[i+1];
+
+    return 1;
+}
+
+
 int main() {
 
  criar(); 
 }
-
