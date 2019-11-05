@@ -77,13 +77,15 @@ t_elemento esvaziar(t_fila * fila){
 	int i;
 	t_no *aux;
 	t_elemento valor = { "" } ;
-	while(isVazia(fila)){
+	while(!isVazia(fila)){
 		valor = remover(fila);
-	}
+  }
 	return valor;
+}
 
 int main(void) {
   t_fila Filona;
+  t_no *aux;
   t_elemento dado;
   t_no nozinho;
   int i;
@@ -97,18 +99,26 @@ if (isVazia(&Filona)) {
 } 
 //adicionando nomes na fila
 for(i = 0; i < 10; i++){
-		printf("\nInsira um nome para adicionar a lista: ");
+		printf("\nInsira um nome para adicionar a fila\n: ");
 		scanf("%s", dado.nome);
-		inserir(&Filona, dado);
+		if (inserir(&Filona, dado) == 0)
+    printf("Erro de memoria");
 } 
 //removendo elementos da fila
-printf("Que elemento deseja remover da fila?");
-scanf("%s", dado.nome);
-remover(&Filona);
+dado = remover(&Filona);
+printf("%s foi removido da lista", dado.nome);
+
 //exibir fila
-for(i = 0;i >= Filona.quant_element;i++){
-		printf("\n%s", Filona.inicio->prox);
+aux = Filona.inicio;
+for(i = 0;i < Filona.quant_element;i++){
+		printf("\n%s", aux->dado.nome);
+    aux = aux->prox;
 	}
   //esvaziando fila
 esvaziar(&Filona);
+aux = Filona.inicio;
+for(i = 0;i < Filona.quant_element;i++){
+		printf("\n%s", aux->dado.nome);
+    aux = aux->prox;
+	}
 } 
